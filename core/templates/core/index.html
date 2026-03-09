@@ -1,0 +1,380 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Niraj Kumar Sharma — Aspiring Cybersecurity Engineer & Full-Stack Developer. Portfolio showcasing Python, Java, C++, Django projects.">
+  <meta name="author" content="Niraj Kumar Sharma">
+  <title>Niraj Kumar Sharma — Cybersecurity &amp; Dev Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Floating particles -->
+<div class="particles" id="particles"></div>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav>
+  <div class="nav-logo">[ <span>&lt;</span>NKS<span>/&gt;</span> ] PORTFOLIO</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="status-dot"></div>OPEN TO WORK
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section id="hero">
+
+  <!-- LEFT: Name + photo row, then bio -->
+  <div class="hero-content">
+    <div class="hero-tag">// PROFILE LOADED</div>
+
+    <!-- Name beside photo -->
+    <div class="hero-name-row">
+      <div class="hero-name-block">
+        <h1 class="hero-name">NIRAJ KUMAR<br><span class="accent">SHARMA</span></h1>
+        <div class="hero-role">
+          <span>Aspiring Cybersecurity Engineer &amp; Developer</span>
+          <span class="type-cursor"></span>
+        </div>
+      </div>
+
+      <!-- Circle photo -->
+      <div class="hero-photo-inline">
+        <div class="photo-frame">
+          <div class="photo-glow-bar"></div>
+          <img class="photo-img"
+               src="{% static 'core/images/niraj.jpg' %}"
+               alt="Niraj Kumar Sharma">
+          <div class="photo-scan"></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="hero-desc">
+      CS student with a strong foundation in Python, Java, and C++.
+      Passionate about cybersecurity — learning networking fundamentals,
+      Kali Linux tools, and building secure web apps with Django.
+    </p>
+
+    <div class="hero-badges">
+      <span class="badge">PYTHON</span>
+      <span class="badge">JAVA</span>
+      <span class="badge">C++</span>
+      <span class="badge">DJANGO</span>
+      <span class="badge">KALI LINUX</span>
+      <span class="badge">NETWORKING</span>
+    </div>
+
+    <div class="hero-buttons">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact"  class="btn-secondary">Hire Me</a>
+    </div>
+  </div>
+
+  <!-- RIGHT: Terminal -->
+  <div class="hero-terminal">
+    <div class="t-corner tl"></div>
+    <div class="t-corner tr"></div>
+    <div class="t-corner bl"></div>
+    <div class="t-corner br"></div>
+    <div class="terminal-bar">
+      <div class="t-dot t-red"></div>
+      <div class="t-dot t-yellow"></div>
+      <div class="t-dot t-green"></div>
+      <span style="margin-left:0.5rem">niraj@kali — bash</span>
+    </div>
+    <div class="terminal-body">
+      <span class="t-line"><span class="t-prompt">niraj@kali</span>:~$ <span class="t-cmd" id="t1"></span></span>
+      <span class="t-line t-out"  id="t2" style="display:none">Reading profile data...</span>
+      <span class="t-line"        id="t3" style="display:none"><span class="t-ok">Name    </span><span class="t-out">: Niraj Kumar Sharma</span></span>
+      <span class="t-line"        id="t4" style="display:none"><span class="t-ok">Role    </span><span class="t-out">: CS Graduate / Cybersec Fresher</span></span>
+      <span class="t-line"        id="t5" style="display:none"><span class="t-ok">Stack   </span><span class="t-out">: Python · Java · C++ · Django</span></span>
+      <span class="t-line"        id="t6" style="display:none"><span class="t-ok">OS      </span><span class="t-out">: Kali Linux · Windows</span></span>
+      <span class="t-line"        id="t7" style="display:none"><span class="t-ok">Goal    </span><span class="t-out">: Cybersecurity Engineer</span></span>
+      <span class="t-line"        id="t8" style="display:none"><span class="t-ok">Status  </span><span class="t-out">: Open to internships &amp; jobs ✓</span></span>
+      <span class="t-line"        id="t9" style="display:none"><span class="t-prompt">niraj@kali</span>:~$ <span class="type-cursor"></span></span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════ STATS ═══════════════════ -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-number" data-target="3" data-suffix="+">0</span>
+    <span class="stat-label">Languages</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number" data-target="6" data-suffix="+">0</span>
+    <span class="stat-label">Projects Built</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number" data-target="1" data-suffix="yr">0</span>
+    <span class="stat-label">Year Learning</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number" data-target="100" data-suffix="%">0</span>
+    <span class="stat-label">Dedication</span>
+  </div>
+</div>
+
+<div class="cyber-sep"></div>
+
+<!-- ═══════════════════ ABOUT ═══════════════════ -->
+<section id="about">
+
+  <div>
+    <div class="section-header">
+      <span class="section-tag">01 //</span>
+      <h2 class="section-title">ABOUT ME</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-text">
+      <p>I'm a Computer Science student with a genuine passion for cybersecurity.
+         I've been writing code in Python, Java, and C++ throughout my studies and now I'm
+         channeling that into understanding how systems are attacked and defended.</p>
+      <p>I'm comfortable with Linux, basic networking concepts (TCP/IP, DNS, HTTP), and I've
+         started exploring Kali Linux tools like Nmap for network scanning.
+         I build backend projects using Django, following secure coding practices from the start.</p>
+      <p>I'm actively looking for a junior role or internship where I can grow, contribute,
+         and bridge the gap between development and security.</p>
+    </div>
+  </div>
+
+  <div class="about-skills">
+    <div class="section-header">
+      <span class="section-tag">PROFICIENCY</span>
+      <div class="section-line"></div>
+    </div>
+    {% for item in proficiency %}
+    <div class="skill-row">
+      <div class="skill-meta">
+        <span class="skill-name">{{ item.name }}</span>
+        <span class="skill-pct">{{ item.pct }}%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="width:{{ item.pct }}%"></div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</section>
+
+<div class="cyber-sep"></div>
+
+<!-- ═══════════════════ PROJECTS ═══════════════════ -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-tag">02 //</span>
+    <h2 class="section-title">PROJECTS</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="projects-grid">
+    {% for project in projects %}
+
+      {% if use_db %}
+        {# DB model #}
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-icon">{{ project.emoji }}</span>
+            <span class="project-type">{{ project.category_display }}</span>
+          </div>
+          <div class="project-name">{{ project.title }}</div>
+          <p class="project-desc">{{ project.description }}</p>
+          <div class="project-tags">
+            {% for tag in project.tag_list %}
+              <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% if project.github_url %}
+            <a href="{{ project.github_url }}" class="project-github" target="_blank" rel="noopener">
+              ↗ View on GitHub
+            </a>
+          {% endif %}
+        </div>
+
+      {% else %}
+        {# Static dict fallback #}
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-icon">{{ project.emoji }}</span>
+            <span class="project-type">{{ project.type }}</span>
+          </div>
+          <div class="project-name">{{ project.title }}</div>
+          <p class="project-desc">{{ project.desc }}</p>
+          <div class="project-tags">
+            {% for tag in project.tags %}
+              <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% if project.github %}
+            <a href="{{ project.github }}" class="project-github" target="_blank" rel="noopener">
+              ↗ View on GitHub
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ═══════════════════ SKILLS ═══════════════════ -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-tag">03 //</span>
+    <h2 class="section-title">TECH STACK</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="skills-grid">
+    {% for skill in skills %}
+      <div class="skill-card">
+        <span class="skill-card-icon">
+          {% if use_db %}{{ skill.emoji }}{% else %}{{ skill.emoji }}{% endif %}
+        </span>
+        <div class="skill-card-name">
+          {% if use_db %}{{ skill.name }}{% else %}{{ skill.name }}{% endif %}
+        </div>
+        <div class="skill-card-level">
+          {% if use_db %}{{ skill.level_display }}{% else %}{{ skill.level }}{% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<div class="cyber-sep"></div>
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-tag">04 //</span>
+    <h2 class="section-title">CONTACT</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="contact-grid">
+
+    <!-- Info -->
+    <div>
+      <p style="color:var(--text);line-height:1.85;margin-bottom:1.8rem;">
+        I'm actively looking for internships, junior developer roles, or entry-level
+        cybersecurity positions. If you think I'd be a good fit, let's talk.
+      </p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div>
+            <span class="contact-text-label">Email</span>
+            <span class="contact-text-val">neerazsharma70@gmail.com</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">🐙</span>
+          <div>
+            <span class="contact-text-label">GitHub</span>
+            <span class="contact-text-val">https://github.com/Neeraz-Kumar-Sharma</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">💼</span>
+          <div>
+            <span class="contact-text-label">LinkedIn</span>
+            <span class="contact-text-val">https://www.linkedin.com/in/niraj-sharma-b7b877388/</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div>
+            <span class="contact-text-label">Location</span>
+            <span class="contact-text-val">Liepaja, Latvia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div>
+      {% if form_success %}
+        <div class="alert alert-success">✓ Message transmitted! I'll get back to you soon.</div>
+      {% endif %}
+
+      <div id="formAlert" class="alert" style="display:none"></div>
+
+      <form id="contactForm" method="POST" action="{% url 'core:index' %}#contact" class="contact-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="id_name">// Your Name</label>
+          {{ form.name }}
+          {% if form.name.errors %}
+            <span class="form-error">{{ form.name.errors|join:", " }}</span>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="id_email">// Email Address</label>
+          {{ form.email }}
+          {% if form.email.errors %}
+            <span class="form-error">{{ form.email.errors|join:", " }}</span>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="id_subject">// Subject</label>
+          {{ form.subject }}
+          {% if form.subject.errors %}
+            <span class="form-error">{{ form.subject.errors|join:", " }}</span>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="id_message">// Message</label>
+          {{ form.message }}
+          {% if form.message.errors %}
+            <span class="form-error">{{ form.message.errors|join:", " }}</span>
+          {% endif %}
+        </div>
+
+        <button type="submit" class="btn-primary btn-submit" style="width:100%;padding:1rem;border:none;cursor:pointer;">
+          SEND MESSAGE
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <span>© 2026 Niraj Kumar Sharma</span>
+  <span class="footer-built">// HTML · CSS · JS · DJANGO</span>
+  <a href="#">↑ TOP</a>
+</footer>
+
+<!-- JS -->
+<script src="{% static 'core/js/animations.js' %}"></script>
+<script src="{% static 'core/js/main.js' %}"></script>
+
+</body>
+</html>
