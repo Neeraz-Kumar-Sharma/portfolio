@@ -96,7 +96,8 @@ def index(request):
                     recipient_list=[settings.CONTACT_EMAIL],
                     fail_silently=True,
                 )
-            except Exception:
+            except Exception as e:
+                print(f"Email error: {e}")
                 pass
 
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':

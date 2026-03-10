@@ -87,12 +87,14 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # EMAIL BACKEND (for contact form — configure SMTP in production)
-# EMAIL CONFIG
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'neerazsharma70@gmail.com'    # ← your Gmail
-EMAIL_HOST_PASSWORD = 'hmnadauddmnlhcju'          # ← 16-char app password (no spaces)
-DEFAULT_FROM_EMAIL = 'neerazsharma70@gmail.com'
-CONTACT_EMAIL = 'neerazsharma70@gmail.com'       # ← where you receive messages
+
+# EMAIL
+EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST          = 'smtp.gmail.com'
+EMAIL_PORT          = 587
+EMAIL_USE_TLS       = True
+EMAIL_USE_SSL       = False
+EMAIL_HOST_USER     = os.environ.get('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+DEFAULT_FROM_EMAIL  = os.environ.get('EMAIL_HOST_USER', '')
+CONTACT_EMAIL       = os.environ.get('CONTACT_EMAIL', '')
