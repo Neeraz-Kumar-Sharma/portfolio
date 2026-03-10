@@ -1,14 +1,7 @@
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.core.mail import send_mail
-from django.conf import settings
+from django.shortcuts import render
 from django.http import JsonResponse
-
 from .models import Project, Skill
 from .forms import ContactForm
-
-
-# ─── Portfolio data (hardcoded fallbacks if DB is empty) ──────────────────────
 
 SKILLS_DATA = [
     {'name': 'Python',        'emoji': '🐍', 'level': 'STRONG'},
@@ -71,60 +64,32 @@ PROJECTS_DATA = [
 ]
 
 PROFICIENCY = [
-    {'name': 'Python',                'pct': 85},
-    {'name': 'Java',                  'pct': 75},
-    {'name': 'C++',                   'pct': 70},
-    {'name': 'Django / Web Backend',  'pct': 75},
-    {'name': 'HTML / CSS / JS',       'pct': 70},
+    {'name': 'Python',                 'pct': 85},
+    {'name': 'Java',                   'pct': 75},
+    {'name': 'C++',                    'pct': 70},
+    {'name': 'Django / Web Backend',   'pct': 75},
+    {'name': 'HTML / CSS / JS',        'pct': 70},
     {'name': 'Networking Fundamentals','pct': 55},
-    {'name': 'Linux / Kali Basics',   'pct': 60},
+    {'name': 'Linux / Kali Basics',    'pct': 60},
 ]
 
 
-# ─── Views ────────────────────────────────────────────────────────────────────
-
 def index(request):
-    """Main portfolio page — handles GET (render) and POST (contact form)."""
-
     form = ContactForm()
     form_success = False
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            # Save to database
-            contact = form.save()
-
-           # Email notification
-            try:
-                if settings.EMAIL_HOST_USER and settings.EMAIL_HOST_PASSWORD:
-                    send_mail(
-                        subject=f"[Portfolio] New Message: {contact.subject}",
-                        message=(
-                            f"Name: {contact.name}\n"
-                            f"Email: {contact.email}\n\n"
-                            f"{contact.message}"
-                        ),
-                        from_email=settings.EMAIL_HOST_USER,
-                        recipient_list=[settings.CONTACT_EMAIL],
-                        fail_silently=True,
-                    )
-            except Exception:
-                pass  # never crash on email error
-                pass  # Don't crash if email is not configured
-
+            form.save()
             form_success = True
-            form = ContactForm()  # reset
-
-            # AJAX support
+            form = ContactForm()
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'status': 'ok', 'message': 'Message sent!'})
-
         else:
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                return JsonResponse({'status': 'error', 'errors': str(form.errors)}, status=400)
+                return JsonResponse({'status': 'error', 'errors': 'Invalid form'}, status=400)
 
-    # Fetch from DB if populated, else use static data
     db_projects = Project.objects.filter(is_visible=True)
     db_skills   = Skill.objects.all()
 
