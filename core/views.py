@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.core.mail import send_mail
+from django.conf import settings
 from .models import Project, Skill
 from .forms import ContactForm
 
@@ -81,9 +83,22 @@ def index(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()
+            contact = form.save()
             form_success = True
             form = ContactForm()
+
+            # Send email
+            try:
+                send_mail(
+                    subject=f"[Portfolio] {contact.subject}",
+                    message=f"Name: {contact.name}\nEmail: {contact.email}\n\nMessage:\n{contact.message}",
+                    from_email=settings.EMAIL_HOST_USER,
+                    recipient_list=[settings.CONTACT_EMAIL],
+                    fail_silently=True,
+                )
+            except Exception:
+                pass
+
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'status': 'ok', 'message': 'Message sent!'})
         else:

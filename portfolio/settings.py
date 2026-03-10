@@ -93,6 +93,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'neerazsharma70@gmail.com'    # ← your Gmail
-EMAIL_HOST_PASSWORD = 'hmna daud dmnl hcju'          # ← 16-char app password (no spaces)
+EMAIL_HOST_PASSWORD = 'hmnadauddmnlhcju'          # ← 16-char app password (no spaces)
 DEFAULT_FROM_EMAIL = 'neerazsharma70@gmail.com'
 CONTACT_EMAIL = 'neerazsharma70@gmail.com'       # ← where you receive messages
