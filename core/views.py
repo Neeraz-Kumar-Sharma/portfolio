@@ -104,7 +104,7 @@ def index(request):
                 return JsonResponse({'status': 'ok', 'message': 'Message sent!'})
         else:
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                return JsonResponse({'status': 'error', 'errors': 'Invalid form'}, status=400)
+               return JsonResponse({'status': 'error', 'errors': str(form.errors)}, status=400)
 
     db_projects = Project.objects.filter(is_visible=True)
     db_skills   = Skill.objects.all()
