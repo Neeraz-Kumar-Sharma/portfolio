@@ -95,26 +95,22 @@ def index(request):
             # Save to database
             contact = form.save()
 
-            # Optional email notification
+           # Email notification
             try:
-                send_mail(
-                    subject=f"[Portfolio] New Message: {contact.subject}",
-                    message=(
-                        f"You received a new message from your portfolio!\n\n"
-                        f"{'─'*40}\n"
-                        f"Name    : {contact.name}\n"
-                        f"Email   : {contact.email}\n"
-                        f"Subject : {contact.subject}\n"
-                        f"{'─'*40}\n\n"
-                        f"{contact.message}\n\n"
-                        f"{'─'*40}\n"
-                        f"Reply directly to: {contact.email}"
-                    ),
-                    from_email=settings.EMAIL_HOST_USER,
-                    recipient_list=[settings.CONTACT_EMAIL],
-                    fail_silently=False,
-                )
+                if settings.EMAIL_HOST_USER and settings.EMAIL_HOST_PASSWORD:
+                    send_mail(
+                        subject=f"[Portfolio] New Message: {contact.subject}",
+                        message=(
+                            f"Name: {contact.name}\n"
+                            f"Email: {contact.email}\n\n"
+                            f"{contact.message}"
+                        ),
+                        from_email=settings.EMAIL_HOST_USER,
+                        recipient_list=[settings.CONTACT_EMAIL],
+                        fail_silently=True,
+                    )
             except Exception:
+                pass  # never crash on email error
                 pass  # Don't crash if email is not configured
 
             form_success = True
@@ -126,7 +122,7 @@ def index(request):
 
         else:
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                return JsonResponse({'status': 'error', 'errors': form.errors}, status=400)
+                return JsonResponse({'status': 'error', 'errors': str(form.errors)}, status=400)
 
     # Fetch from DB if populated, else use static data
     db_projects = Project.objects.filter(is_visible=True)
